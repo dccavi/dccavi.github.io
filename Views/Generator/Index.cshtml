@@ -1,0 +1,145 @@
+﻿@model SongStorm.ViewModels.IdeaVM
+
+@{
+
+    string btnClassList = "btn btn-secondary col-12 mb-2";
+    string btnClassListChord = "btn btn-primary col-12 mb-2";
+    string btnClassListType = "btn btn-success col-12 mb-2";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    @Html.Partial("_TopNavHeader")
+</head>
+<body class="bg-dark">
+
+    <div class="container" style="margin-bottom: 10px;">
+
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col-md-2 bg-secondary" style="padding: 20px; border-radius: 10px;" id="colorSchemePanel">
+
+                    <div class="btn btn-light col-md-12 col-lg-5" style="margin-right: 15px;"> Light </div>
+                    <div class="btn btn-dark col-md-12 col-lg-5"> Dark </div>
+
+                </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-3"></div>
+
+            <div id="generateIdeaBlock" class="col-sm-12 col-md-6 bg-light pb-4 rounded">
+                <h2>Drawing a Blank?</h2>
+
+
+
+                <div id="selectionBlock" class="mt-2">
+                    <p>Click the button below to generate a random prompt.</p>
+                    <p class="small">Select one or more of the folowing to narrow down idea types retrieved:</p>
+                    <ul id="ideaOptionList" class="col-md-12">
+                        <li class="@btnClassListType" id="typeSelect">Song Type</li>
+                        <li class="@btnClassList" id="wordSelection">Word</li>
+                        <li class="@btnClassList" id="expressionSelection">Situation/Sentiment</li>
+                        <li class="@btnClassList" id="structureSelection">Song Structure</li>          
+                        <li class="@btnClassListChord" id="chordSelectionPR">Chord Progression (Pop/Rock)</li>
+                        <li class="@btnClassListChord" id="chordSelectionJ">Chord Progression (Jazz)</li>
+                    </ul>
+                </div>
+
+                <button id="generateIdeaBtn">Generate a Prompt</button>
+
+                <div id="promptResult" class="mt-3 bg-dark hidden">
+
+                    <div id="songTypeDiv" class="topIdeaBlock hidden">
+                        <span id="songType" class="ideaBlock"></span>
+                    </div>
+
+                    <div id="songIdeaDiv" class="middleIdeaBlock hidden">
+                        <span id="songIdea" class="ideaBlock"></span>
+                    </div>
+
+                    <div id="chordIdeaDiv" class="bottomIdeaBlock hidden">
+                        <span id="chordIdeaPR" class="ideaBlock"></span>
+                        <span id="chordIdeaJ" class="ideaBlock"></span>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-3"></div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    $(document).ready(function () {
+        $("li").mousedown(function () {
+            var element = document.getElementById(this.id);
+
+            if (element.classList.contains('selectedPrompt')) {
+                element.classList.remove('selectedPrompt');
+            } else {
+                element.classList.add('selectedPrompt');
+            }
+        })
+    })
+
+    $("#generateIdeaBtn").on("click", function () {
+
+        var types = "";
+        hidePrompt();
+
+    $('.selectedPrompt').each(function (i, obj) {
+        types = types + "-" + $(this).text();
+    });
+
+    $.ajax({
+        url: '@Url.Action("GetIdea", "Idea")',
+        type: "POST",
+        cache: false,
+        data: { "ideaTypes": types },
+        success: function (data) {
+
+            if (data.typeOut != "") {
+                var element = document.getElementById('songTypeDiv');
+                element.classList.add('bg-success', 'text-white');
+                element.classList.remove('hidden');
+            }
+
+            if (data.ideaOut != "") {
+                var element = document.getElementById('songIdeaDiv');
+                element.classList.add('bg-secondary', 'text-white');
+                element.classList.remove('hidden');
+            }
+
+            if (data.chordsOutJ != "" || data.chordsOutPR != "") {
+                var element = document.getElementById('chordIdeaDiv');
+                element.classList.add('bg-primary', 'text-white');
+                element.classList.remove('hidden');
+            }
+
+            document.getElementById('promptResult').classList.remove('hidden');
+
+            document.getElementById('songType').innerText = "Write a " + data.typeOut + ":";
+            document.getElementById('songIdea').innerText = data.ideaOut;
+            document.getElementById('chordIdeaPR').innerText = data.chordsOutPR;
+            document.getElementById('chordIdeaJ').innerText = data.chordsOutJ;
+        }
+        });
+    })
+
+    function hidePrompt() {
+        document.getElementById('songTypeDiv').classList.add('hidden');
+        document.getElementById('songIdeaDiv').classList.add('hidden');
+        document.getElementById('chordIdeaDiv').classList.add('hidden');
+    }
+
+</script>

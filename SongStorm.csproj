@@ -95,14 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Idea\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
-    <Content Include="Views\Idea\Idea.cshtml" />
     <Content Include="Views\Shared\_TopNavHeader.cshtml" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -196,11 +194,10 @@
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1-vsdoc.js" />
     <Content Include="Content\Site.css" />
-    <Content Include="Views\Idea\Expand.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Shared\_Workspace.cshtml" />
     <Content Include="Views\Shared\_WriteSpace.cshtml" />
-    <Content Include="Views\Generator\Generator.cshtml" />
+    <Content Include="Views\Generator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\umd\popper.min.js.map" />

@@ -14,12 +14,12 @@ namespace SongStorm.Controllers
 
         IdeaLists il = new IdeaLists();
 
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
-        public ActionResult Generator(IdeaVM ivmIn, string loophole)
+        public ActionResult Index(IdeaVM ivmIn, string loophole)
         {
             return View();
         }
