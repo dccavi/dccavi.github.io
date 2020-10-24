@@ -1,0 +1,131 @@
+﻿@model SongStorm.ViewModels.IdeaVM
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    @Html.Partial("_TopNavHeader")
+</head>
+<body class="bg-dark">
+
+    <div id="viewButtons" class="col-5 pull-left bg-light">
+        <span>
+            <button autofocus id="viewDevelop" class="viewBtn btn btn-secondary">Develop</button>
+            <button id="viewWrite" class="viewBtn btn btn-secondary">Write</button>
+        </span>
+    </div>
+
+    <div class="container col-9 pull-left bg-light mt-2" id="spaceDevelop">
+        @Html.Partial("_Workspace", Model)
+    </div>
+
+
+    <div class="container col-9 pull-left hidden" id="spaceWrite">
+        @Html.Partial("_WriteSpace", Model)
+    </div>
+
+        <div id="sidebar" class="col-3 pull-right mt-2">
+            @Html.Partial("_Sidebar", Model.Sidebar)
+        </div>
+
+</body>
+</html>
+
+<script>
+
+    var sidebarID;
+    var blankClass;
+    var sidebarArray = []
+
+    $('.addBtn').on('click', function () {
+        var id = $(this).attr('id')
+
+        //Freewrite
+        if (id == "btnAddFW") {
+            sidebarID = "ideasFW"
+            blankClass = "FWBlank"
+        }
+
+        //Simile + Metaphor
+        if (id == "btnAddSM") {
+            sidebarID = "ideasSM"
+            blankClass = "SMBlank"
+        }
+
+        //Imagery
+        if (id == "btnAddI") {
+            sidebarID = "ideasI"
+            blankClass = "IBlank"
+        }
+
+        //Other
+        if (id == "btnAddO") {
+            sidebarID = "ideasO"
+            blankClass = "OBlank"
+        }
+
+        $('.' + blankClass).each(function (index) {
+            if ($(this).val() != "") {
+
+            $('#' + sidebarID).append("<p class='sbItem' onclick='remove(this)'>" + $(this).val() + "</p>");
+                document.getElementById(sidebarID).classList.remove('hidden');
+
+                $(this).val('')
+
+         }
+       })
+    })
+
+
+    $('.clearBtn').on('click', function () {
+        var id = $(this).attr('id')
+
+        //Freewrite
+        if (id == "btnClearFW") {
+            blankClass = "FWBlank"
+        }
+
+        //Imagery
+        if (id == "btnClearI") {
+            blankClass = "IBlank"
+        }
+
+        //Simile + Metaphor
+        if (id == "btnClearSM") {
+            blankClass = "SMBlank"
+        }
+
+        //Other
+        if (id == "btnClearO") {
+            blankClass = "OBlank"
+        }
+
+        $('.' + blankClass).each(function (index) {
+            $(this).val('');
+        })
+    })
+
+    function remove(thisIn) {
+        var element = thisIn;
+        element.remove();
+    }
+
+    $('.viewBtn').on('click', function () {
+
+        var elementW = document.getElementById('spaceWrite')
+        var elementD = document.getElementById('spaceDevelop')
+
+        var id = $(this).attr('id')
+
+        if (id == "viewWrite") {
+            elementD.classList.add('hidden')
+            elementW.classList.remove('hidden')
+        }
+
+        if (id == "viewDevelop") {
+            elementW.classList.add('hidden')
+            elementD.classList.remove('hidden')
+        }
+    })
+
+</script>

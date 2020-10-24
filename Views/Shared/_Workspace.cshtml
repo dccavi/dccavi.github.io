@@ -1,0 +1,86 @@
+﻿@model SongStorm.ViewModels.IdeaVM
+
+@{
+    string FWBlankClass = "FWBlank col-12 mb-2";
+    string SMBlankClass = "SMBlank col-12 mb-2";
+    string IBlankClass = "IBlank col-12 mb-2";
+    string OBlankClass = "OBlank col-12 mb-2";
+}
+
+<h2>@Model.IdeaIn</h2>
+<p>Use the space below to expand on '@Model.IdeaIn'. Place your best ideas in their respecitve blanks and click "Add to Side" to make them visible from both the "Develop" and "Write" views.</p>
+
+<div class="row">
+<div id="tabFreewrite" class="col-8">
+    <h3>Freewriting Space</h3>
+    <p class="formfield">
+        @Html.LabelFor(m => m.Freewrite, new { @class = "hidden" })
+        <br />
+        @Html.TextAreaFor(m => m.Freewrite, new { style = "width: 100%; height: 200px;" })
+    </p>
+
+    <br />
+</div>
+
+<div id="tabNotes" class="col-4">
+    <h3>Notes</h3>
+    <p class="formfield">
+        @Html.LabelFor(m => m.Notes, new { @class = "hidden" })
+        <br />
+        @Html.TextAreaFor(m => m.Notes, new { style = "width: 100%; height: 200px;" })
+    </p>
+
+    <br />
+</div>
+</div>
+
+    <h3>Keep the best stuff</h3>
+
+    <!--Maintain favorite words-->
+    <div class="row">
+        <div class="col-3" id="maintainFW">
+            <h4>Words &#38; Phrases</h4>
+            <input type="text" class="@FWBlankClass" />
+            <input type="text" class="@FWBlankClass" />
+            <input type="text" class="@FWBlankClass" />
+
+            <a class="btn btn-success mt-3 addBtn" id="btnAddFW">Add to side</a>
+            <a class="btn btn-secondary mt-3 clearBtn" id="btnClearFW">Clear</a>
+        </div>
+
+        <!--Mintain Simile & Metaphor-->
+        <div class="col-3" id="maintainSM">
+            <h4>Simile &#38; Metaphor</h4>
+            <input type="text" class="@SMBlankClass" placeholder="ex: @Model.IdeaIn is like a cat" />
+            <input type="text" class="@SMBlankClass" />
+            <input type="text" class="@SMBlankClass" />
+
+            <a class="btn btn-success mt-3 addBtn" id="btnAddSM">Add to side</a>
+            <a class="btn btn-secondary mt-3 clearBtn" id="btnClearSM">Clear</a>
+        </div>
+
+        <!--Maintain Imagery-->
+        <div class="col-3" id="maintainI">
+            <h4>Imagery</h4>
+            <input type="text" class="@IBlankClass" />
+            <input type="text" class="@IBlankClass" />
+            <input type="text" class="@IBlankClass" />
+
+            <a class="btn btn-success mt-3 addBtn" id="btnAddI">Add to side</a>
+            <a class="btn btn-secondary mt-3 clearBtn" id="btnClearI">lear</a>
+        </div>
+
+        <!--Maintain Other-->
+        <div class="col-3" id="maintainO">
+            <h4>Other</h4>
+            <input type="text" class="@OBlankClass" />
+            <input type="text" class="@OBlankClass" />
+            <input type="text" class="@OBlankClass" />
+
+            <a class="btn btn-success mt-3 addBtn" id="btnAddO">Add to side</a>
+            <a class="btn btn-secondary mt-3 clearBtn" id="btnClearO">Clear</a>
+        </div>
+
+    </div>
+</div>
+

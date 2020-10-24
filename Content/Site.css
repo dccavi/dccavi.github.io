@@ -1,0 +1,70 @@
+﻿body {
+}
+
+#generateIdeaBlock{
+    /*margin-top: 1em;*/
+}
+
+.selectedPrompt{
+    background-color: lightgray;
+}
+
+.selectedPrompt {
+    /*opacity: 0.75;
+    box-shadow: inset 0 0 10px #000000;*/
+    background-color: #292b2c !important;
+}
+
+
+li {
+    width: 25%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.ideaBlock{
+    padding: 5px;
+    display: block;
+}
+
+#songIdea{
+    color: white;
+}
+
+.formfield * {
+    vertical-align: top;
+}
+
+#sidebarBody{
+    padding-left: 3px;
+    padding-top: 3px;
+}
+
+.sbItem {
+    cursor: pointer;
+}
+
+.sbItem:hover{
+    text-decoration: underline;
+}
+
+#promptResult{
+    padding: 10px;
+}
+
+/*----IDEA BLOCKS----*/
+#topIdeaBlock{
+    padding-top: 10px;
+}
+
+#middleIdeaBlock{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#bottomIdeaBlock {
+    /*padding-bottom: 10px;*/
+}

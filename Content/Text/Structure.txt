@@ -1,0 +1,31 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2512
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 verses that end with a couplet \
+verses ending with a rhyming couplet \
+verses with three lines\
+verses that do not rhyme\
+a verse with five lines\
+a verse with an ABBA rhyme scheme
+no chorus\
+a chorus with three lines\
+a chorus where every line rhymes\
+a chorus with five lines\
+a chorus ending with a couplet
+a pre-chorus\
+a pre-chorus that's one line
+a pre-chorus that does not rhyme
+a prechorus where the last line rhymes with the first line of the chorus
+a bridge\
+a bridge that repeats 
+a sixteen-bar bridge
+a guitar riff as the main hook\
+a unison guitar and bass riff
+a tempo greater than 160bpm
+a tempo slower than 80 bpm
+a tempo that changes from one section to another
+}
